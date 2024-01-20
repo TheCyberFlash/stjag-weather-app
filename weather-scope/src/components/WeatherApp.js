@@ -10,7 +10,7 @@ const WeatherApp = () => {
                 <TiWeatherPartlySunny size={50} color="blue" /> Weather App
             </h1>
             <WeatherSelect />
-            <WeatherInputSearch />
+            {/* <WeatherInputSearch /> */}
         </div>
     );
 };
