@@ -8,6 +8,9 @@ const WeatherSelect = () => {
     const [cityOptions, setCityOptions] = useState([]);
 
     useEffect(() => {
+
+        // Call API to get countries and cities
+        
         const countries = [
             { value: 'USA', label: 'USA' },
             { value: 'Canada', label: 'Canada' },
@@ -59,10 +62,12 @@ const WeatherSelect = () => {
 
     const handleCityChange = (selectedOption) => {
         setCity(selectedOption);
+        console.log(selectedOption);
     }
 
     const handleCountryChange = (selectedOption) => {
         setCountry(selectedOption);
+        console.log(selectedOption);
     }
 
     const handleSubmit = (e) => {
