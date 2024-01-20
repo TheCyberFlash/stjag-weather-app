@@ -5,10 +5,10 @@ import WeatherInputSearch from "./WeatherInputSearch";
 const WeatherApp = () => {
     return (
         <div>
-        <WeatherSelect />
-        <WeatherInputSearch />
+            <WeatherSelect />
+            <WeatherInputSearch />
         </div>
     );
-    };
+};
 
 export default WeatherApp;
