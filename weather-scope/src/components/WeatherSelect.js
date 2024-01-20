@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Select from 'react-select';
+import { Container, Row, Col } from 'react-bootstrap';
 
 const WeatherSelect = () => {
     const [city, setCity] = useState('');
@@ -78,12 +79,21 @@ const WeatherSelect = () => {
     }
 
     return (
-        <div>
-            <Select options={countryOptions} placeholder="Country" onChange={handleCountryChange} />
-            <Select options={cityOptions} placeholder="City" onChange={handleCityChange}/>
-
-            <button onClick={handleSubmit}>Search</button>
-        </div>
+        <Container>
+            <Row>
+                <Col md={4}>
+                    <Select options={countryOptions} placeholder="Country" onChange={handleCountryChange} />
+                </Col>
+                <Col md={4}>
+                    <Select options={cityOptions} placeholder="City" onChange={handleCityChange}/>
+                </Col>
+                <Col md={1}>
+                </Col>
+                <Col md={3}>
+                    <button onClick={handleSubmit}>Search</button>
+                </Col>
+            </Row>
+        </Container>
     )
 }
 
