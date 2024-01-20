@@ -57,12 +57,12 @@ const WeatherSelect = () => {
         setCityOptions(cities);
     } ,[]);
 
-    const handleCityChange = (e) => {
-        setCity(e.target.value);
+    const handleCityChange = (selectedOption) => {
+        setCity(selectedOption);
     }
 
-    const handleCountryChange = (e) => {
-        setCountry(e.target.value);
+    const handleCountryChange = (selectedOption) => {
+        setCountry(selectedOption);
     }
 
     const handleSubmit = (e) => {
