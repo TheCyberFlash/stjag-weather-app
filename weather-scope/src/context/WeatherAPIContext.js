@@ -42,7 +42,7 @@ const WeatherAPIProvider = ({ children }) => {
     }
 
     return (
-        <WeatherAPIContext.Provider value={{ countryOptions, cityOptions }}>
+        <WeatherAPIContext.Provider value={{ countryOptions, cityOptions, fetchCities }}>
             {children}
         </WeatherAPIContext.Provider>
     )
