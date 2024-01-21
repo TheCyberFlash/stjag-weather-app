@@ -3,8 +3,6 @@ import { useWeatherAPI } from "../context/WeatherAPIContext";
 
 const WeatherForecast = () => {
     const { weatherDetails, weatherError } = useWeatherAPI();
-    console.log(weatherError);
-    // if(!weatherDetails) return null;
 
     return (
         <div>
