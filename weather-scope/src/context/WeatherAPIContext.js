@@ -45,15 +45,20 @@ const WeatherAPIProvider = ({ children }) => {
 
     const fetchWeatherDetails = (city, countryCode) => {
         fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city},${countryCode}&appid=${API_KEY}`)
-        .then(response => response.json())
-        .then(data => {
+          .then(response => {
+            if (!response.ok) {
+              throw new Error('City not found');
+            }
+            return response.json();
+          })
+          .then(data => {
             setWeatherDetails(data);
-        })
-        .catch(error => {
-            console.log(error);
+          })
+          .catch(error => {
+            console.error('Error fetching weather details:', error.message);
             setWeatherDetails(null);
-        })
-    }
+          });
+      };      
 
     return (
         <WeatherAPIContext.Provider value={{ countryOptions, cityOptions, fetchCities, fetchWeatherDetails, weatherDetails }}>
