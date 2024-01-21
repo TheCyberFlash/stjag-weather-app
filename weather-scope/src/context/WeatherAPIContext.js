@@ -18,13 +18,8 @@ const WeatherAPIProvider = ({ children }) => {
     const [weatherError, setWeatherError] = useState(null);
 
     useEffect(() => {
-        fetchInitalOptions();
-    } ,[]);
-
-    const fetchInitalOptions = () => {
         fetchCountries();
-        fetchCities("UK");
-    }
+    } ,[]);
 
     const fetchCountries = () => {
         fetch("http://api.geonames.org/countryInfoJSON?username=thecyberflash")
