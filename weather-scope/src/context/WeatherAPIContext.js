@@ -14,6 +14,7 @@ export const useWeatherAPI = () => {
 const WeatherAPIProvider = ({ children }) => {
     const [countryOptions, setCountryOptions] = useState([]);
     const [cityOptions, setCityOptions] = useState([]);
+    const [weatherDetails, setWeatherDetails] = useState(null);
 
     useEffect(() => {
         fetchInitalOptions();
@@ -46,12 +47,12 @@ const WeatherAPIProvider = ({ children }) => {
         fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`)
         .then(response => response.json())
         .then(data => {
-            console.log(data);
+            setWeatherDetails(data);
         })
     }
 
     return (
-        <WeatherAPIContext.Provider value={{ countryOptions, cityOptions, fetchCities, fetchWeatherDetails }}>
+        <WeatherAPIContext.Provider value={{ countryOptions, cityOptions, fetchCities, fetchWeatherDetails, weatherDetails }}>
             {children}
         </WeatherAPIContext.Provider>
     )
