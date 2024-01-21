@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 
 const WeatherAPIContext = createContext();
-const API_KEY = "c74f95c88b9845570b7dd656dd58f74b";
+const API_KEY = process.env.OPENWEATHERMAP_API_KEY;
 
 export const useWeatherAPI = () => {
     if (useContext(WeatherAPIContext) === undefined) {
