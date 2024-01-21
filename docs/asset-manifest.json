@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/stjag-weather-app/static/css/main.f96f07a4.css",
-    "main.js": "/stjag-weather-app/static/js/main.6d6b1148.js",
+    "main.js": "/stjag-weather-app/static/js/main.ad7a0462.js",
     "index.html": "/stjag-weather-app/index.html",
     "main.f96f07a4.css.map": "/stjag-weather-app/static/css/main.f96f07a4.css.map",
-    "main.6d6b1148.js.map": "/stjag-weather-app/static/js/main.6d6b1148.js.map"
+    "main.ad7a0462.js.map": "/stjag-weather-app/static/js/main.ad7a0462.js.map"
   },
   "entrypoints": [
     "static/css/main.f96f07a4.css",
-    "static/js/main.6d6b1148.js"
+    "static/js/main.ad7a0462.js"
   ]
 }
