@@ -22,7 +22,7 @@ const WeatherAPIProvider = ({ children }) => {
     } ,[]);
 
     const fetchCountries = () => {
-        fetch("http://api.geonames.org/countryInfoJSON?username=thecyberflash")
+        fetch("https://api.geonames.org/countryInfoJSON?username=thecyberflash")
         .then(response => response.json())
         .then(data => {
             const countries = data.geonames.map(country => ({ label: country.countryName, value: country.countryCode }));
@@ -31,7 +31,7 @@ const WeatherAPIProvider = ({ children }) => {
     }
 
     const fetchCities = (country) => {
-        fetch(`http://api.geonames.org/searchJSON?username=thecyberflash&country=${country}`)
+        fetch(`https://api.geonames.org/searchJSON?username=thecyberflash&country=${country}`)
         .then(response => response.json())
         .then(data => {
             const cities = data.geonames.map(city => ({ label: city.name, value: city.name }));
