@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 
 const WeatherAPIContext = createContext();
+const API_KEY = "c74f95c88b9845570b7dd656dd58f74b";
 
 export const useWeatherAPI = () => {
     if (useContext(WeatherAPIContext) === undefined) {
@@ -41,8 +42,16 @@ const WeatherAPIProvider = ({ children }) => {
         })
     }
 
+    const fetchWeatherDetails = (city) => {
+        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`)
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+        })
+    }
+
     return (
-        <WeatherAPIContext.Provider value={{ countryOptions, cityOptions, fetchCities }}>
+        <WeatherAPIContext.Provider value={{ countryOptions, cityOptions, fetchCities, fetchWeatherDetails }}>
             {children}
         </WeatherAPIContext.Provider>
     )
