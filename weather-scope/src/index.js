@@ -5,11 +5,10 @@ import App from './App';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import WeatherAPIProvider from './context/WeatherAPIContext';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
+ReactDOM.render(
   <React.StrictMode>
     <WeatherAPIProvider>
       <App />
     </WeatherAPIProvider>
-  </React.StrictMode>
+  </React.StrictMode>, document.getElementById('root')
 );
