@@ -43,8 +43,8 @@ const WeatherAPIProvider = ({ children }) => {
         })
     }
 
-    const fetchWeatherDetails = (city) => {
-        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`)
+    const fetchWeatherDetails = (city, countryCode) => {
+        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city},${countryCode}&appid=${API_KEY}`)
         .then(response => response.json())
         .then(data => {
             setWeatherDetails(data);
