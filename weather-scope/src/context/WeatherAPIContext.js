@@ -49,6 +49,10 @@ const WeatherAPIProvider = ({ children }) => {
         .then(data => {
             setWeatherDetails(data);
         })
+        .catch(error => {
+            console.log(error);
+            setWeatherDetails(null);
+        })
     }
 
     return (
