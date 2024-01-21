@@ -10,32 +10,7 @@ const WeatherSelect = () => {
     const [countryOptions, setCountryOptions] = useState([]);
     const [cityOptions, setCityOptions] = useState([]);
 
-    useEffect(() => {
-        fetchInitalOptions();
-    } ,[]);
 
-    const fetchInitalOptions = () => {
-        fetchCountries();
-        fetchCities("UK");
-    }
-
-    const fetchCountries = () => {
-        fetch("http://api.geonames.org/countryInfoJSON?username=thecyberflash")
-        .then(response => response.json())
-        .then(data => {
-            const countries = data.geonames.map(country => ({ label: country.countryName, value: country.countryCode }));
-            setCountryOptions(countries);
-        })
-    }
-
-    const fetchCities = (country) => {
-        fetch(`http://api.geonames.org/searchJSON?username=thecyberflash&country=${country}`)
-        .then(response => response.json())
-        .then(data => {
-            const cities = data.geonames.map(city => ({ label: city.name, value: city.name }));
-            setCityOptions(cities);
-        })
-    }
 
     const handleCityChange = (selectedOption) => {
         setCity(selectedOption);
