@@ -4,6 +4,9 @@ import './index.css';
 import App from './App';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import WeatherAPIProvider from './context/WeatherAPIContext';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
