@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import Select from 'react-select';
 import { Container, Row, Col } from 'react-bootstrap';
 
+const API_KEY = "c74f95c88b9845570b7dd656dd58f74b";
+
 const WeatherSelect = () => {
     const [city, setCity] = useState('');
     const [country, setCountry] = useState('');
@@ -9,12 +11,13 @@ const WeatherSelect = () => {
     const [cityOptions, setCityOptions] = useState([]);
 
     useEffect(() => {
-
-        fetchCountries();
-
-        fetchCities("UK");
-
+        fetchInitalOptions();
     } ,[]);
+
+    const fetchInitalOptions = () => {
+        fetchCountries();
+        fetchCities("UK");
+    }
 
     const fetchCountries = () => {
         fetch("http://api.geonames.org/countryInfoJSON?username=thecyberflash")
@@ -47,7 +50,11 @@ const WeatherSelect = () => {
         e.preventDefault();
         console.log(city, country);
 
-        // Call API ...
+        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city.value}&appid=${API_KEY}`)
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+        })
     }
 
     return (
