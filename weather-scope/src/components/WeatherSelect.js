@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import Select from 'react-select';
 import { Container, Row, Col } from 'react-bootstrap';
+import { useWeatherAPI } from '../context/WeatherAPIContext';
 
 const API_KEY = "c74f95c88b9845570b7dd656dd58f74b";
 
 const WeatherSelect = () => {
+    const { countryOptions, cityOptions, fetchCities } = useWeatherAPI();
+
     const [city, setCity] = useState('');
     const [country, setCountry] = useState('');
-    const [countryOptions, setCountryOptions] = useState([]);
-    const [cityOptions, setCityOptions] = useState([]);
-
-
 
     const handleCityChange = (selectedOption) => {
         setCity(selectedOption);
