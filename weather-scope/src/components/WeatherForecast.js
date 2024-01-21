@@ -7,14 +7,14 @@ const WeatherForecast = () => {
 
   return (
     <div className="mt-4 d-flex justify-content-center">
-      <div style={{ width: "60%" }}>
+      <div style={{ width: "25%" }}>
         {weatherDetails && (
           <Card>
             <Card.Header as="h2">Weather Forecast</Card.Header>
             <Card.Body>
               <Card.Title>{weatherDetails.name}</Card.Title>
-              <div className="d-flex">
-                
+              <div className="d-flex justify-content-between">
+
                 <ListGroup variant="flush">
                   <ListGroup.Item>
                     Temperature: {weatherDetails.main.temp}
