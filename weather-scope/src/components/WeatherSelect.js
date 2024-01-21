@@ -10,55 +10,20 @@ const WeatherSelect = () => {
 
     useEffect(() => {
 
-        // Call API to get countries and cities
-        
-        const countries = [
-            { value: 'USA', label: 'USA' },
-            { value: 'Canada', label: 'Canada' },
-            { value: 'Mexico', label: 'Mexico' },
-        ];
+        fetch("http://api.geonames.org/countryInfoJSON?username=thecyberflash")
+        .then(response => response.json())
+        .then(data => {
+            const countries = data.geonames.map(country => ({ label: country.countryName, value: country.countryName }));
+            setCountryOptions(countries);
+        })
 
-        setCountryOptions(countries);
+        fetch("http://api.geonames.org/searchJSON?username=thecyberflash&country=US")
+        .then(response => response.json())
+        .then(data => {
+            const cities = data.geonames.map(city => ({ label: city.name, value: city.name }));
+            setCityOptions(cities);
+        })        
 
-        const cities = [
-            { value: 'New York', label: 'New York' },
-            { value: 'Los Angeles', label: 'Los Angeles' },
-            { value: 'Chicago', label: 'Chicago' },
-            { value: 'Houston', label: 'Houston' },
-            { value: 'Philadelphia', label: 'Philadelphia' },
-            { value: 'Phoenix', label: 'Phoenix' },
-            { value: 'San Antonio', label: 'San Antonio' },
-            { value: 'San Diego', label: 'San Diego' },
-            { value: 'Dallas', label: 'Dallas' },
-            { value: 'San Jose', label: 'San Jose' },
-            { value: 'Austin', label: 'Austin' },
-            { value: 'Jacksonville', label: 'Jacksonville' },
-            { value: 'Fort Worth', label: 'Fort Worth' },
-            { value: 'Columbus', label: 'Columbus' },
-            { value: 'San Francisco', label: 'San Francisco' },
-            { value: 'Charlotte', label: 'Charlotte' },
-            { value: 'Indianapolis', label: 'Indianapolis' },
-            { value: 'Seattle', label: 'Seattle' },
-            { value: 'Denver', label: 'Denver' },
-            { value: 'Washington', label: 'Washington' },
-            { value: 'Boston', label: 'Boston' },
-            { value: 'El Paso', label: 'El Paso' },
-            { value: 'Nashville', label: 'Nashville' },
-            { value: 'Detroit', label: 'Detroit' },
-            { value: 'Oklahoma City', label: 'Oklahoma City' },
-            { value: 'Portland', label: 'Portland' },
-            { value: 'Las Vegas', label: 'Las Vegas' },
-            { value: 'Memphis', label: 'Memphis' },
-            { value: 'Louisville', label: 'Louisville' },
-            { value: 'Baltimore', label: 'Baltimore' },
-            { value: 'Milwaukee', label: 'Milwaukee' },
-            { value: 'Albuquerque', label: 'Albuquerque' },
-            { value: 'Tucson', label: 'Tucson' },
-            { value: 'Fresno', label: 'Fresno' },
-            { value: 'Mesa', label: 'Mesa' },
-        ];
-
-        setCityOptions(cities);
     } ,[]);
 
     const handleCityChange = (selectedOption) => {
@@ -82,7 +47,9 @@ const WeatherSelect = () => {
         <Container>
             <Row>
                 <Col md={4}>
-                    <Select options={countryOptions} placeholder="Country" onChange={handleCountryChange} />
+                    {countryOptions.length > 0 && (
+                        <Select options={countryOptions} placeholder="Country" onChange={handleCountryChange} />
+                    )}
                 </Col>
                 <Col md={4}>
                     <Select options={cityOptions} placeholder="City" onChange={handleCityChange}/>
