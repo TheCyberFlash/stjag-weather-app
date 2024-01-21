@@ -33,7 +33,10 @@ const WeatherSelect = () => {
                     )}
                 </Col>
                 <Col md={4}>
-                    <Select options={cityOptions} placeholder="City" onChange={handleCityChange}/>
+                    {
+                        cityOptions.length > 0 && (
+                            <Select options={cityOptions} placeholder="City" onChange={handleCityChange} />
+                        )}
                 </Col>
                 <Col md={1}>
                 </Col>
