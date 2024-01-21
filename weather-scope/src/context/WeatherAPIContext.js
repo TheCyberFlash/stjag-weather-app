@@ -48,7 +48,10 @@ const WeatherAPIProvider = ({ children }) => {
         fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city},${countryCode}&appid=${API_KEY}`)
           .then(response => {
             if (!response.ok) {
-              throw new Error('City not found');
+                return response.json().then(errorData => {
+                    setWeatherError(errorData.message);
+                    throw new Error(errorData.message);
+                  });
             }
             return response.json();
           })
