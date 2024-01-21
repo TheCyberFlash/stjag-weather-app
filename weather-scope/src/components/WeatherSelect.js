@@ -6,7 +6,7 @@ import { useWeatherAPI } from '../context/WeatherAPIContext';
 const API_KEY = "c74f95c88b9845570b7dd656dd58f74b";
 
 const WeatherSelect = () => {
-    const { countryOptions, cityOptions, fetchCities } = useWeatherAPI();
+    const { countryOptions, cityOptions, fetchCities, fetchWeatherDetails } = useWeatherAPI();
 
     const [city, setCity] = useState('');
     const [country, setCountry] = useState('');
@@ -22,13 +22,8 @@ const WeatherSelect = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(city, country);
 
-        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city.value}&appid=${API_KEY}`)
-        .then(response => response.json())
-        .then(data => {
-            console.log(data);
-        })
+        fetchWeatherDetails(city.value);
     }
 
     return (
