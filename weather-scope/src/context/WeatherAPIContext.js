@@ -15,6 +15,7 @@ const WeatherAPIProvider = ({ children }) => {
     const [countryOptions, setCountryOptions] = useState([]);
     const [cityOptions, setCityOptions] = useState([]);
     const [weatherDetails, setWeatherDetails] = useState(null);
+    const [weatherError, setWeatherError] = useState(null);
 
     useEffect(() => {
         fetchInitalOptions();
@@ -53,15 +54,17 @@ const WeatherAPIProvider = ({ children }) => {
           })
           .then(data => {
             setWeatherDetails(data);
+            setWeatherError(null);
           })
           .catch(error => {
             console.error('Error fetching weather details:', error.message);
             setWeatherDetails(null);
+            setWeatherError(error.message);
           });
       };      
 
     return (
-        <WeatherAPIContext.Provider value={{ countryOptions, cityOptions, fetchCities, fetchWeatherDetails, weatherDetails }}>
+        <WeatherAPIContext.Provider value={{ countryOptions, cityOptions, fetchCities, fetchWeatherDetails, weatherDetails, weatherError }}>
             {children}
         </WeatherAPIContext.Provider>
     )
