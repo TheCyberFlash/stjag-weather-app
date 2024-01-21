@@ -21,7 +21,7 @@ const WeatherSelect = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        fetchWeatherDetails(city.value);
+        fetchWeatherDetails(city.value, country.value);
     }
 
     return (
